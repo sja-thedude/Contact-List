@@ -1,0 +1,76 @@
+{
+    "contacts" : [
+        {
+            "id": "21523",
+            "name": "SJA",
+            "photo": "https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png",
+            "mobile": "+966572705741",
+            "email": "sja.affu765@gmail.com",
+            "company": "Microverse & Dovelp",
+            "title": "Techinal Support Engineer & Game Developer",
+            "group": "1"
+        },
+        {
+            "id": "43815",
+            "name": "SMA",
+            "photo": "https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png",
+            "mobile": "+966...999",
+            "email": "mariyababy786@gmail.com",
+            "company": "None",
+            "title": "Student",
+            "group": "3"
+        },
+        {
+            "id": "12345",
+            "name": "KHD",
+            "photo": "https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png",
+            "mobile": "+910043783973",
+            "email": "khd@gmail.com",
+            "company": "Nike",
+            "title": "Engineer",
+            "group": "5"
+        },
+        {
+            "id": "85434",
+            "name": "DBO",
+            "photo": "https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png",
+            "mobile": "+178438267322",
+            "email": "dbo@gmail.com",
+            "company": "Apple",
+            "title": "Support Specialist",
+            "group": "6"
+        }
+    ],
+    "groups" : [
+        {
+            "id" : "1",
+            "name" : "Colleague"
+
+        },
+        {
+            "id" : "2",
+            "name" : "Friend"
+
+        },
+        {
+            "id" : "3",
+            "name" : "Family"
+
+        },
+        {
+            "id" : "4",
+            "name" : "Service"
+
+        },
+        {
+            "id" : "5",
+            "name" : "Community"
+
+        },
+        {
+            "id" : "6",
+            "name" : "Social"
+
+        }
+    ]
+}
