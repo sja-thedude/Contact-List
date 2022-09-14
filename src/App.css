@@ -1,3 +1,21 @@
-.btn-success {
-    margin: 20px;
+.contact-search {
+    padding: 20px;
+}
+
+.text {
+    color:blueviolet;
+}
+
+.search {
+    background-color: black !important;
+    color: white !important;
+}
+
+.search:hover {
+    background-color: rgb(123, 123, 123) !important;
+    color: black !important;
+}
+
+.sub {
+    margin: 10px;
 }
