@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import "../../../App.css";
 import { ContactService } from '../../../services/ContactService';
-import Spinner from "../../spinner/Spinner";
+//import Spinner from "../../spinner/Spinner";
 
 let ContactList = () => {
 
@@ -42,7 +42,6 @@ let ContactList = () => {
 
         return(
             <React.Fragment>
-                <pre>{JSON.stringify(contacts)}</pre>
                 <section className="contact-search">
                 <div className="container">
                     <div className="grid">
@@ -77,33 +76,35 @@ let ContactList = () => {
                 </div>
                 </section>
 
-                {
-                    loading ? <Spinner/> : <React.Fragment>
                         <section className="contact-list">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-6">
-                                <div className="card">
+                            {
+                                contacts.length > 0 &&
+                                contacts.map(contact => {
+                                    return(
+                                        <div className="col-md-6" key={contacts.id}>
+                                <div className="card my-3">
                                     <div className="card-body">
                                         <div className="row align-items-center d-flex justify-content-around">
                                             <div className="col-md-4">
-                                                <img src="https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png" alt="Female User Icon" className='contact-img'/>
+                                                <img src={contact.photo} alt="" className='contact-img'/>
                                             </div>
                                             <div className="col-md-7">
                                                 <ul className='list-group'>
                                                     <li className='list-group-item list-group-item-action'>
-                                                        Name : <span className='fw-bold'>SJA</span>
+                                                        Name : <span className='fw-bold'>{contact.name}</span>
                                                     </li>
                                                     <li className='list-group-item list-group-item-action'>
-                                                        Mobile : <span className='fw-bold'>+966572705741</span>
+                                                        Mobile : <span className='fw-bold'>{contact.mobile}</span>
                                                     </li>
                                                     <li className='list-group-item list-group-item-action'>
-                                                        Email : <span className='fw-bold'>sja.affu765@gmail.com</span>
+                                                        Email : <span className='fw-bold'>{contact.email}</span>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div className="col-md-1 d-flex flex-column align-items-center">
-                                                <Link to={`/contacts/view/:contactId`} className='btn btn-warning my-1'>
+                                                <Link to={`/contacts/view/${contact.id}`} className='btn btn-warning my-1'>
                                                     <i className='fa fa-eye'/>
                                                 </Link>
                                                 <Link to={`/contacts/edit/:contactId`} className='btn btn-info my-1'>
@@ -117,13 +118,13 @@ let ContactList = () => {
                                     </div>
                                 </div>
                             </div>
+                                    )
+                                })
+                            }
                             
                         </div>
                     </div>
                 </section>
-                    </React.Fragment>
-                }
-
                 
             </React.Fragment>
     );
