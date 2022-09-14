@@ -57,7 +57,7 @@ let {loading , contact , errorMessage , group} = state;
             </section>
 
         {
-            Object.keys(contact).length>0 && Object.keys(group).length > 0 &&
+            Object.keys(contact).length > 0 && Object.keys(group).length > 0 &&
 
             <section className="view-contact mt-3">
                 <div className="container">

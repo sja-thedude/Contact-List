@@ -10,7 +10,7 @@ export class ContactService {
 
     static getGroup(contact){
         let groupId = contact.groupId;
-        let dataURL = `${this.serverURL}/${groupId}`;
+        let dataURL = `${this.serverURL}/groups/${groupId}`;
         return axios.get(dataURL);
     }
 
