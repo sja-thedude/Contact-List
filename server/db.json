@@ -8,7 +8,7 @@
             "email": "sja.affu765@gmail.com",
             "company": "Microverse & Dovelp",
             "title": "Techinal Support Engineer & Game Developer",
-            "group": "1"
+            "groupId": "1"
         },
         {
             "id": "43815",
@@ -18,7 +18,7 @@
             "email": "mariyababy786@gmail.com",
             "company": "None",
             "title": "Student",
-            "group": "3"
+            "groupId": "3"
         },
         {
             "id": "12345",
@@ -28,7 +28,7 @@
             "email": "khd@gmail.com",
             "company": "Nike",
             "title": "Engineer",
-            "group": "5"
+            "groupId": "5"
         },
         {
             "id": "85434",
@@ -38,7 +38,7 @@
             "email": "dbo@gmail.com",
             "company": "Apple",
             "title": "Support Specialist",
-            "group": "6"
+            "groupId": "6"
         }
     ],
     "groups" : [

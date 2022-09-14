@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import "../../../App.css";
 import { ContactService } from '../../../services/ContactService';
-//import Spinner from "../../spinner/Spinner";
 
 let ContactList = () => {
 
