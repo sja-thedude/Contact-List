@@ -11,8 +11,15 @@ The requirements are to create a contact list with add, delete and view buttons.
 - React
 - Javascript
 - CSS
+- Json
 - Bootstap
 - AJax
+
+# Steps to Run this project:
+
+- In your Terminal Run `npm install` then `npm start` to open up react app.
+- In Integrated server terminal Run `npm install` then `npm start` to run the backend.
+
 # Developer:
 
 Syeda Juveria Afreen
