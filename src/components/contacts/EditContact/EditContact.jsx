@@ -1,8 +1,82 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../../App.css";
-import {Link} from 'react-router-dom';
+import {Link, useParams, useNavigate} from 'react-router-dom';
+import { ContactService } from '../../../services/ContactService';
 
 let EditContact = () => {
+
+    let navigate = useNavigate();
+
+    let {contactId} = useParams();
+
+    let [state , setState] = useState({
+        loading : false,
+        contact : {
+            name : '',
+            photo : '',
+            mobile : '',
+            email : '',
+            company : '',
+            title : '',
+            groupId : ''
+        },
+        groups : [],
+        errorMessage : ''
+    });
+
+    let editContacts = async () => {
+        
+        try {
+            setState({...state, loading: true});
+            let response = await ContactService.getContacts(contactId);
+            let groupResponse = await ContactService.getGroups();
+            setState({
+                ...state,
+                loading: false,
+                contact: response.data,
+                groups: groupResponse.data
+            });
+        }
+        catch (error) {
+            setState({
+                ...state,
+                loading: false,
+                errorMessage: error.message
+            });
+        }
+    
+    }
+
+    useEffect(() => {
+        editContacts()
+},);
+
+let updateInput = (event) =>{
+    setState({
+        ...state,
+        contact: {
+            ...state.contact,
+            [event.target.name] : event.target.value
+        }
+    });
+};
+
+let submitForm = async (event) => {
+    event.preventDefault();
+    try {
+        let response = await ContactService.updateContact(state.contact, contactId);
+        if(response){
+            navigate('/contacts/list', {replace: true});
+        }
+    }
+    catch (error) {
+        setState({...state , errorMessage: error.message});
+        navigate(`/contacts/edit/${contactId}`, {replace: false});
+    }
+};
+
+    let {loading , contact , groups , errorMessage} = state;
+
     return (
         <React.Fragment>
         <section className='add-contact p-3'>
@@ -15,28 +89,71 @@ let EditContact = () => {
                 </div>
                 <div className="row align-items-center">
                     <div className="col-md-4">
-                        <form action="">
+                        <form onSubmit={submitForm}>
                             <div className="mb-2">
-                                <input type="text" className='form-control' placeholder="Name"/>
+                                <input
+                                required="true"
+                                name="name"
+                                value={contact.name}
+                                onChange={updateInput}
+                                type="text" className='form-control' placeholder="Name"/>
                             </div>
                             <div className="mb-2">
-                                <input type="text" className='form-control' placeholder="Photo Url"/>
+                                <input
+                                required="true"
+                                name="photo"
+                                value={contact.photo}
+                                onChange={updateInput}
+                                type="text" className='form-control' placeholder="Photo Url"/>
                             </div>
                             <div className="mb-2">
-                                <input type="number" className='form-control' placeholder="Mobile"/>
+                                <input
+                                required="true"
+                                name="mobile"
+                                value={contact.mobile}
+                                onChange={updateInput}
+                                type="number" className='form-control' placeholder="Mobile"/>
                             </div>
                             <div className="mb-2">
-                                <input type="email" className='form-control' placeholder="Email"/>
+                                <input
+                                required="true"
+                                name="email"
+                                value={contact.email}
+                                onChange={updateInput}
+                                type="email" className='form-control' placeholder="Email"/>
                             </div>
                             <div className="mb-2">
-                                <input type="text" className='form-control' placeholder="Company"/>
+                                <input
+                                required="true"
+                                name="company"
+                                value={contact.company}
+                                onChange={updateInput}
+                                type="text" className='form-control' placeholder="Company"/>
                             </div>
                             <div className="mb-2">
-                                <input type="text" className='form-control' placeholder="Title"/>
+                                <input
+                                required="true"
+                                name="title"
+                                value={contact.title}
+                                onChange={updateInput}
+                                type="text" className='form-control' placeholder="Title"/>
                             </div>
                             <div className="mb-2">
-                                <select className="form-control">
+                                <select
+                                required="true"
+                                name="groupId"
+                                value={contact.groupId}
+                                onChange={updateInput}
+                                className="form-control">
                                     <option value="">Select a Group</option>
+                                    {
+                                        groups.length > 0 &&
+                                        groups.map(group => {
+                                            return(
+                                                <option key={group.id} value={group.id}>{group.name}</option>
+                                            )
+                                        })
+                                    }
                                 </select>
                             </div>
                             <div className="mb-2">
@@ -46,7 +163,7 @@ let EditContact = () => {
                         </form>
                     </div>
                     <div className="col-md-6">
-                        <img src="https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png" alt="Female User Icon" className='contact-img' />
+                        <img src={contact.photo} alt="Female User Icon" className='contact-img' />
                     </div>
                 </div>
             </div>

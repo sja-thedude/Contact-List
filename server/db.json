@@ -1,76 +1,60 @@
 {
-    "contacts" : [
-        {
-            "id": "21523",
-            "name": "SJA",
-            "photo": "https://assets.stickpng.com/images/585e4bc4cb11b227491c3395.png",
-            "mobile": "+966572705741",
-            "email": "sja.affu765@gmail.com",
-            "company": "Microverse & Dovelp",
-            "title": "Techinal Support Engineer & Game Developer",
-            "groupId": "1"
-        },
-        {
-            "id": "43815",
-            "name": "SMA",
-            "photo": "https://rawanalsubaiedice.files.wordpress.com/2016/10/women-business-user-icon-44928.png",
-            "mobile": "+966...999",
-            "email": "mariyababy786@gmail.com",
-            "company": "None",
-            "title": "Student",
-            "groupId": "3"
-        },
-        {
-            "id": "12345",
-            "name": "KHD",
-            "photo": "https://i.pinimg.com/originals/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg",
-            "mobile": "+910043783973",
-            "email": "khd@gmail.com",
-            "company": "Nike",
-            "title": "Engineer",
-            "groupId": "5"
-        },
-        {
-            "id": "85434",
-            "name": "DBO",
-            "photo": "https://cdn-icons-png.flaticon.com/512/219/219986.png",
-            "mobile": "+178438267322",
-            "email": "dbo@gmail.com",
-            "company": "Apple",
-            "title": "Support Specialist",
-            "groupId": "6"
-        }
-    ],
-    "groups" : [
-        {
-            "id" : "1",
-            "name" : "Colleague"
-
-        },
-        {
-            "id" : "2",
-            "name" : "Friend"
-
-        },
-        {
-            "id" : "3",
-            "name" : "Family"
-
-        },
-        {
-            "id" : "4",
-            "name" : "Service"
-
-        },
-        {
-            "id" : "5",
-            "name" : "Community"
-
-        },
-        {
-            "id" : "6",
-            "name" : "Social"
-
-        }
-    ]
+  "contacts": [
+    {
+      "id": "85434",
+      "name": "DBO",
+      "photo": "https://cdn-icons-png.flaticon.com/512/219/219986.png",
+      "mobile": "+178438267322",
+      "email": "dbo@gmail.com",
+      "company": "Apple",
+      "title": "Support Specialist",
+      "groupId": "6"
+    },
+    {
+      "id": "43815",
+      "name": "SMA",
+      "photo": "https://rawanalsubaiedice.files.wordpress.com/2016/10/women-business-user-icon-44928.png",
+      "mobile": "+966...999",
+      "email": "mariyababy786@gmail.com",
+      "company": "None",
+      "title": "Student",
+      "groupId": "3"
+    },
+    {
+      "id": "85434",
+      "name": "DBO",
+      "photo": "https://cdn-icons-png.flaticon.com/512/219/219986.png",
+      "mobile": "+178438267322",
+      "email": "dbo@gmail.com",
+      "company": "Apple",
+      "title": "Support Specialist",
+      "groupId": "6"
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "Colleague"
+    },
+    {
+      "id": "2",
+      "name": "Friend"
+    },
+    {
+      "id": "3",
+      "name": "Family"
+    },
+    {
+      "id": "4",
+      "name": "Service"
+    },
+    {
+      "id": "5",
+      "name": "Community"
+    },
+    {
+      "id": "6",
+      "name": "Social"
+    }
+  ]
 }

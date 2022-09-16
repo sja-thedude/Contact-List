@@ -6,9 +6,14 @@ import { ContactService } from '../../../services/ContactService';
 
 let ContactList = () => {
 
+    let [query, setQuery] = useState({
+        text : ''
+    });
+
     let [state , setState] = useState({
         loading : false,
         contacts : [],
+        filteredContacts : [],
         errorMessage : ''
     });
 
@@ -20,7 +25,8 @@ let ContactList = () => {
             setState({
                 ...state,
                 loading: false,
-                contacts: response.data
+                contacts: response.data,
+                filteredContacts: response.data
             });
         }
         catch (error) {
@@ -37,7 +43,43 @@ let ContactList = () => {
         getContacts()
 },);
 
-    let {loading , contacts , errorMessage} = state;
+// delete contact
+let clickDelete = async (contactId) => {
+    try {
+        let response = await ContactService.deleteContact(contactId);
+        if(response){
+            setState({...state, loading: true});
+            let response = await ContactService.getAllContacts();
+            setState({
+                ...state,
+                loading: false,
+                contacts: response.data,
+                filteredContacts: response.data
+            });
+        }
+    }
+    catch (error) {
+        setState({
+            ...state,
+            loading: false,
+            errorMessage: error.message
+        });
+    }
+};
+
+// search contact
+let searchContacts = (event) => {
+    setQuery({...query, text:event.target.value});
+    let theContacts = state.contacts.fiter(contact => {
+        return contact.name.toLowerCase().includes(event.target.value.toLowerCase())
+    })
+    setState({
+        ...state,
+        filteredContacts: theContacts
+    });
+};
+
+    let {loading , contacts , filteredContacts , errorMessage} = state;
 
         return(
             <React.Fragment>
@@ -59,7 +101,11 @@ let ContactList = () => {
                                 <form className="row">
                                     <div className="inp col">
                                         <div className="input mb-4">
-                                            <input type="text" className="for-control" placeholder="Search Names"/>
+                                            <input 
+                                            name="text"
+                                            value={query.text}
+                                            onChange={searchContacts}
+                                            type="text" className="for-control" placeholder="Search Names"/>
                                         </div>   
                                     </div>
                                     <div className="sub col">
@@ -79,8 +125,8 @@ let ContactList = () => {
                     <div className="container">
                         <div className="row">
                             {
-                                contacts.length > 0 &&
-                                contacts.map(contact => {
+                                filteredContacts.length > 0 &&
+                                filteredContacts.map(contact => {
                                     return(
                                         <div className="col-md-6" key={contacts.id}>
                                 <div className="card my-3">
@@ -106,10 +152,10 @@ let ContactList = () => {
                                                 <Link to={`/contacts/view/${contact.id}`} className='btn btn-warning my-1'>
                                                     <i className='fa fa-eye'/>
                                                 </Link>
-                                                <Link to={`/contacts/edit/:contactId`} className='btn btn-info my-1'>
+                                                <Link to={`/contacts/edit/${contact.id}`} className='btn btn-info my-1'>
                                                     <i className='fa fa-pen'/>
                                                 </Link>
-                                                <button className='btn btn-danger my-1'>
+                                                <button className='btn btn-danger my-1' onClick={() => clickDelete(contact.id)}>
                                                     <i className='fa fa-trash'/>
                                                 </button>
                                             </div>

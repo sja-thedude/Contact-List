@@ -58,12 +58,12 @@ let submitForm = async (event) => {
     try {
         let response = await ContactService.createContact(state.contact);
         if(response){
-            navigate('/contact/list', {replace: true});
+            navigate('/contacts/list', {replace: true});
         }
     }
     catch (error) {
         setState({...state , errorMessage: error.message});
-        navigate('/contact/add', {replace: false});
+        navigate('/contacts/add', {replace: false});
     }
 };
 
@@ -84,7 +84,7 @@ let submitForm = async (event) => {
                             <form onSubmit={submitForm}>
                                 <div className="mb-2">
                                     <input
-                                        required={true}
+                                        required="true"
                                         name="name"
                                         value={contact.name}
                                         onChange={updateInput}
@@ -92,7 +92,7 @@ let submitForm = async (event) => {
                                 </div>
                                 <div className="mb-2">
                                     <input
-                                    required={true}
+                                    required="true"
                                     name="photo"
                                     value={contact.photo}
                                     onChange={updateInput}
@@ -100,7 +100,7 @@ let submitForm = async (event) => {
                                 </div>
                                 <div className="mb-2">
                                     <input
-                                    required={true}
+                                    required="true"
                                     name="mobile"
                                     value={contact.mobile}
                                     onChange={updateInput}
@@ -108,7 +108,7 @@ let submitForm = async (event) => {
                                 </div>
                                 <div className="mb-2">
                                     <input
-                                    required={true}
+                                    required="true"
                                     name="email"
                                     value={contact.email}
                                     onChange={updateInput}
@@ -116,7 +116,7 @@ let submitForm = async (event) => {
                                 </div>
                                 <div className="mb-2">
                                     <input
-                                    required={true}
+                                    required="true"
                                     name="company"
                                     value={contact.company}
                                     onChange={updateInput}
@@ -124,7 +124,7 @@ let submitForm = async (event) => {
                                 </div>
                                 <div className="mb-2">
                                     <input
-                                    required={true}
+                                    required="true"
                                     name="title"
                                     value={contact.title}
                                     onChange={updateInput}
@@ -132,7 +132,7 @@ let submitForm = async (event) => {
                                 </div>
                                 <div className="mb-2">
                                     <select 
-                                    required={true}
+                                    required="true"
                                     name="groupId"
                                     value={contact.groupId}
                                     onChange={updateInput}
@@ -157,7 +157,6 @@ let submitForm = async (event) => {
                         </div>
                     </div>
                 </div>
-
             </section>
         </React.Fragment>
     );
